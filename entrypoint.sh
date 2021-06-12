@@ -56,7 +56,9 @@ cd $GITHUB_WORKSPACE
 ############ Authenticate to GKE ############
 
 # Recover Application Credentials For GKE Authentication
+echo "$INPUT_APPLICATION_CREDENTIALS"
 echo "$INPUT_APPLICATION_CREDENTIALS" | base64 -d > /tmp/account.json
+cat /tmp/account.json
 
 # Use gcloud CLI to retrieve k8s authentication
 gcloud auth activate-service-account --key-file=/tmp/account.json
